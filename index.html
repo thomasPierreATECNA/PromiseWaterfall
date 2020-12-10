@@ -1,0 +1,113 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./waterfall.js"></script>
+  </head>
+  <body>
+    <button onclick="javascript:go()">
+      Success (Click me and whatch the console !)
+    </button>
+
+    <button onclick="javascript:goWithError()">
+      Error (Click me and whatch the console !)
+    </button>
+
+    <script>
+      const A = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise A succeed");
+            resolve();
+          }, 500);
+        });
+      const B = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise B succeed");
+            resolve();
+          }, 500);
+        });
+      const C = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise C succeed");
+            resolve();
+          }, 500);
+        });
+      const D = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise D succeed");
+            resolve();
+          }, 500);
+        });
+      const E = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise E succeed");
+            resolve();
+          }, 500);
+        });
+      const F = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise F succeed");
+            resolve();
+          }, 500);
+        });
+      const G = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise G succeed");
+            resolve();
+          }, 500);
+        });
+      const H = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise H succeed");
+            resolve();
+          }, 500);
+        });
+      const I = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise I succeed");
+            resolve();
+          }, 500);
+        });
+      const J = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise J succeed");
+            resolve();
+          }, 500);
+        });
+
+      const Error = () =>
+        new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log("promise error");
+            reject();
+          }, 500);
+        });
+
+      const go = () => {
+        Promise.waterfall(
+          [A, B, C, [D, E, F], G, [H, I], J],
+          index => console.log("All requests succeed !"),
+          index => console.log(`An error occured on request ${index}/7`)
+        );
+      };
+      const goWithError = () => {
+        Promise.waterfall(
+          [A, B, C, Error, [D, E, F], G, [H, I], J],
+          index => console.log("All requests succeed !"),
+          index => console.log(`An error occured on request ${index}/8`)
+        );
+      };
+    </script>
+  </body>
+</html>
